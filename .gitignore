@@ -1,0 +1,17 @@
+# Ignore dataset raw files
+/data/raw/
+
+# Python env
+venv/
+.env
+*.pyc
+__pycache__/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Results
+results/
+
+# VSCode
+.vscode/

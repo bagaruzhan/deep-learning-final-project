@@ -9,14 +9,12 @@ This is a comprehensive deep learning project for **medical image classification
 
 ##  Problem Statement
 
-Brain tumors are a critical health concern with high mortality rates if not detected early. Manual classification of MRI scans by radiologists is time-consuming and prone to human error. This project develops an AI-powered system to:
+Brain tumors are a critical health concern with high mortality rates if not detected early. Manual classification of MRI scans by radiologists is time-consuming and prone to human error. This project develops system to:
 
 - **Automate** brain tumor detection from MRI images
 - **Classify** tumor types accurately and quickly
 - **Assist** radiologists in clinical decision-making
 - **Improve** diagnostic efficiency and patient outcomes
-
-The model achieves **95%+ validation accuracy** with proper calibration and can serve as a clinical decision support system.
 
 ##  Dataset
 

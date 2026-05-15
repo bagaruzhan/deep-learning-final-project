@@ -4,17 +4,18 @@
 
 This is a comprehensive deep learning project for **medical image classification** focusing on brain tumor detection and classification using MRI scans. The project implements state-of-the-art CNN architectures with transfer learning to classify brain tumors into four categories: glioma, meningioma, pituitary tumor, or no tumor.
 
-**Project Duration:** 4 weeks 
-**Domain:** Medical Imaging / Computer Vision  
+- **Project Duration:** 4 weeks 
+- **Domain:** Medical Imaging / Computer Vision  
 
 ##  Problem Statement
 
-Brain tumors are a critical health concern with high mortality rates if not detected early. Manual classification of MRI scans by radiologists is time-consuming and prone to human error. This project develops system to:
+Brain tumors are a critical health concern with high mortality rates if not detected early. Manual classification of MRI scans by radiologists is time-consuming and prone to human error.
+This project aims to:
 
-- **Automate** brain tumor detection from MRI images
-- **Classify** tumor types accurately and quickly
-- **Assist** radiologists in clinical decision-making
-- **Improve** diagnostic efficiency and patient outcomes
+- **Automate** brain tumor detection from MRI scans
+- **Classify** tumor types into four categories
+- **Support** medical image analysis workflows
+- **Improve** consistency of predictions using deep learning
 
 ##  Dataset
 
@@ -49,28 +50,21 @@ brain-tumor-mri-deep-learning/
 ├── notebooks/
 │   ├── week_01.ipynb           # Week 1: EDA 
 │   ├── week_02.ipynb           # Week 2: Baseline Model & CNN Architecture & Training
-│   ├── week_03.ipynb           # Week 3: Transfer Learning & Fine-tuning
+│   ├── week_03.ipynb           # Week 3: Transfer Learning & DL models
 │   └── week_04.ipynb           # Week 4: Grad-CAM & Advanced Analysis
 │
 ├── reports/
 │   ├── week_01.md              # Week 1 summary & findings
 │   ├── week_02.md              # Week 2 progress report
-│   ├── week_03.md              # Week 3 transfer learning results
+│   ├── week_03.md              # Week 3 dl models result
 │   └── week_04.md              # Week 4 final report
 │
 ├── src/
 │   ├── __init__.py             # Package initialization
 │   ├── data_loader.py          # Dataset loading utilities
-│   ├── preprocessor.py         # Image preprocessing functions
 │   ├── models.py               # Model architectures
 │   ├── train.py                # Training loop
-│   ├── evaluate.py             # Evaluation metrics
-│   └── visualization.py        # Visualization utilities
-│
-└── results/
-    ├── models/                 # Saved model weights (`.pth` or `.h5`)
-    ├── plots/                  # Visualizations (confusion matrices, etc.)
-    └── predictions/            # Output predictions on test set
+│   └── evaluate.py             # Evaluation metrics
 ```
 
 ## Quick Start
@@ -122,32 +116,80 @@ brain-tumor-mri-deep-learning/
 -  Image preprocessing fundamentals
 
 ### Week 2: CNN Architecture & Training
-- **Custom CNN Implementation:** 4-layer convolutional network with BatchNorm, ReLU activation, MaxPooling, and adaptive average pooling
-- **Data Augmentation:**
-  - Rotation (±20°), horizontal flip, color jitter (brightness/contrast 0.2)
-  - Training transforms with Normalize(mean=[0.5]×3, std=[0.5]×3)
-- **Training Configuration:**
-  - Optimizer: Adam (lr=0.001, weight_decay=1e-5)
-  - Scheduler: StepLR (step_size=15, gamma=0.5)
-  - Loss: CrossEntropyLoss with early stopping (patience=10)
-  - Batch size: 32, Max epochs: 40
-- **Results (Test Set):**
-  - **With Augmentation:** Accuracy 92.31%, F1-score 92.30%
-  - **Without Augmentation:** Accuracy 55.93%, F1-score 54.59%
-  - Demonstrates importance of data augmentation for generalization
-- **Outputs:** Training curves, confusion matrix, best model saved to `results/models/`
+- 4-layer custom CNN with BatchNorm
+- Strong data augmentation
 
 ### Week 3: Transfer Learning
-- ResNet50 / EfficientNet implementation
-- Fine-tuning strategies
-- Comparative analysis
-- Performance optimization
+- ResNet18, ResNet50, EfficientNet-B0
+- Full fine-tuning vs frozen backbone
+- Learning rate scheduling & early stopping
 
 ### Week 4: Advanced Analysis & Deployment
 - Grad-CAM visualization
 - Confusion matrix analysis
 - Model interpretability
 - Deployment preparation
+
+
+# Models
+## Custom CNN (Week 2)
+
+Architecture:
+
+- 4 convolutional layers
+- Batch normalization
+- ReLU activation
+- Max pooling
+- Adaptive average pooling
+- CrossEntropyLoss
+- Adam optimizer
+
+Results:
+
+| Setup | Accuracy             | F1-score |
+| ---- | --------------------- | ------------ | 
+| Without augmentation | 55.93% | 54.59%        | 
+| With augmentation | 92.31%      | 92.30%        |
+
+
+## Transfer Learning (Week 3)
+
+Models tested:
+- ResNet18
+- EfficientNet-B0
+- ResNet18 full fine-tuning
+
+Training techniques:
+
+Full fine-tuning
+Frozen backbone comparison
+Differential learning rates
+Adam / AdamW optimizers
+Learning rate scheduling
+Early stopping
+Final Results
+
+| Experiment | Model | Strategy | Validation Accuracy | Validation F1 |
+|------------|-------|----------|---------------------|---------------|
+| 1 | ResNet18 | Frozen backbone, trained head only | 81.48% | 81.01% |
+| 2 | ResNet18 | Full fine-tuning with differential learning rates | **98.24%** | **98.24%** |
+| 3 | EfficientNet-B0 | Full fine-tuning with AdamW and cosine LR | 97.78% | 97.78% |
+
+The best validation model, **ResNet18 full fine-tuning**, was then evaluated on the held-out test split:
+
+| Metric | Test Result |
+|--------|-------------|
+| Accuracy | **99.07%** |
+| Precision | **99.07%** |
+| Recall | **99.07%** |
+| F1-score | **99.07%** |
+
+№ Key Findings
+- Transfer learning significantly outperforms CNN from scratch
+- Full fine-tuning works better than frozen features
+- ResNet18 slightly outperformed EfficientNet-B0
+- Most errors occur between glioma and meningioma
+- Pituitary tumors are easiest to detect
 
 ## Technologies Used
 
@@ -158,13 +200,6 @@ brain-tumor-mri-deep-learning/
 | **Data Science** | NumPy, Pandas, Scikit-learn |
 | **Visualization** | Matplotlib, Seaborn |
 | **Utilities** | tqdm, joblib |
-
-##  Expected Performance
-
-- **Week 1 EDA:** Dataset analysis and statistical overview
-- **Week 2 CNN:** 92.31% test accuracy (with augmentation), ~55% without (baseline)
-- **Week 3 Transfer Learning:** ~95-97% accuracy
-- **Week 4 Optimized Model:** ~97%+ accuracy
 
 ##  Important Notes
 
@@ -228,5 +263,10 @@ For questions about the project:
 - Check the weekly reports in `reports/`
 - Review notebook comments and documentation
 - Consult the dataset README in `data/README.md`
+
+
+
+
+
 
 

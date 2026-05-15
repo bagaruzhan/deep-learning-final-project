@@ -37,3 +37,13 @@ ipykernel>=6.26.0
 black>=23.0.0
 flake8>=6.0.0
 pytest>=7.0.0
+
+# Image loading
+Pillow>=9.5.0
+
+# Notebook progress bars and execution
+tqdm>=4.65.0
+
+# Optional dataset download helper used by the Colab workflow
+kaggle>=1.6.0
+

@@ -199,7 +199,7 @@ The best validation model, **ResNet18 full fine-tuning**, was then evaluated on 
 | Recall | **99.07%** |
 | F1-score | **99.07%**|
 
-№№ Final Results (Test Set):
+## Final Results (Test Set):
 
 | Rank | Model | Test Accuracy | Precision | Recall | F1-Score |
 |------|-------|--------------|-----------|--------|----------|

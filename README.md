@@ -43,6 +43,7 @@ brain-tumor-mri-deep-learning/
 ├── README.md                 
 ├── requirements.txt             # Python dependencies
 ├── .gitignore                   # Git ignore file
+├── app.py                       # Streamlit 
 │
 ├── data/
 │   ├── README.md              

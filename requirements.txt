@@ -1,4 +1,9 @@
-# Brain Tumor MRI Classification - Requirements
+# Brain Tumor MRI Classification — Python Dependencies
+# Python >= 3.9 recommended
+# GPU support — install the correct PyTorch build for your CUDA version:
+# https://pytorch.org/get-started/locally/
+# Example (CUDA 11.8):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 # Core Data Science
 numpy>=1.24.0
@@ -46,4 +51,7 @@ tqdm>=4.65.0
 
 # Optional dataset download helper used by the Colab workflow
 kaggle>=1.6.0
+
+# Streamlit demo app
+streamlit>=1.28.0
 

@@ -5,7 +5,8 @@
 This is a comprehensive deep learning project for **medical image classification** focusing on brain tumor detection and classification using MRI scans. The project implements state-of-the-art CNN architectures with transfer learning to classify brain tumors into four categories: glioma, meningioma, pituitary tumor, or no tumor.
 
 - **Project Duration:** 4 weeks 
-- **Domain:** Medical Imaging / Computer Vision  
+- **Domain:** Medical Imaging / Computer Vision
+- Task Type: Image Classification (Deep Learning)
 
 ##  Problem Statement
 
@@ -57,7 +58,8 @@ brain-tumor-mri-deep-learning/
 │   ├── week_01.md              # Week 1 summary & findings
 │   ├── week_02.md              # Week 2 progress report
 │   ├── week_03.md              # Week 3 dl models result
-│   └── week_04.md              # Week 4 final report
+|   ├── week_04.md              # Week 4 final report
+│   └── final-report.md         # final report
 │
 ├── src/
 │   ├── __init__.py             # Package initialization
@@ -108,6 +110,18 @@ brain-tumor-mri-deep-learning/
    jupyter notebook notebooks/week_01.ipynb
    ```
 
+## Run Streamlit App
+
+   ```bash
+   streamlit run app.py
+   ```
+
+Features:
+- Image upload
+- Model selection
+- Prediction probabilities
+- Grad-CAM visualization
+
 ## Weekly Breakdown
 
 ### Week 1: Exploratory Data Analysis & Baseline
@@ -120,15 +134,15 @@ brain-tumor-mri-deep-learning/
 - Strong data augmentation
 
 ### Week 3: Transfer Learning
-- ResNet18, ResNet50, EfficientNet-B0
-- Full fine-tuning vs frozen backbone
-- Learning rate scheduling & early stopping
+- ResNet18 / EfficientNet-B0
+- Frozen vs fine-tuning comparison
+- Optimization strategies (LR scheduling, AdamW)
 
 ### Week 4: Advanced Analysis & Deployment
-- Grad-CAM visualization
-- Confusion matrix analysis
-- Model interpretability
-- Deployment preparation
+- Grad-CAM interpretability
+- Model comparison
+- Final optimization
+- Streamlit deployment preparation
 
 
 # Models
@@ -182,9 +196,27 @@ The best validation model, **ResNet18 full fine-tuning**, was then evaluated on 
 | Accuracy | **99.07%** |
 | Precision | **99.07%** |
 | Recall | **99.07%** |
-| F1-score | **99.07%** |
+| F1-score | **99.07%**|
 
-№ Key Findings
+№№ Final Results (Test Set):
+
+| Rank | Model | Test Accuracy | Precision | Recall | F1-Score |
+|------|-------|--------------|-----------|--------|----------|
+| 1 | ResNet18 Week 4 (Best) | **98.33%** | **98.34%** | **98.33%** | **98.34%** |
+| 2 | EfficientNet-B0 (W3 Exp 3) | 98.24% | 98.24% | 98.24% | 98.24% |
+| 3 | ResNet18 FineTune (W3 Exp 2) | 98.06% | 98.07% | 98.06% | 98.06% |
+| 4 | Custom CNN (Week 2) | 86.85% | 87.96% | 86.85% | 86.84% |
+| 5 | ResNet18 Frozen (W3 Exp 1) | 85.46% | 85.23% | 85.46% | 84.94% |
+
+## Note on Results Variation
+
+Week 3 and Week 4 results differ due to:
+- unified re-evaluation pipeline in Week 4
+- changes in augmentation and training recipe
+- different checkpoint selection strategy (best-validation vs final benchmark run)
+Week 4 focuses on reproducibility and fair comparison across all models.
+
+## Key Findings
 - Transfer learning significantly outperforms CNN from scratch
 - Full fine-tuning works better than frozen features
 - ResNet18 slightly outperformed EfficientNet-B0
@@ -215,9 +247,8 @@ The best validation model, **ResNet18 full fine-tuning**, was then evaluated on 
 - Training times (estimated):
   - Week 1 EDA: ~5 minutes (CPU acceptable)
   - Week 2 CNN: 15-25 minutes (GPU recommended)
-  - Week 3 Transfer Learning: 10-20 minutes (GPU recommended)
-  - Week 4 Optimization: 15-30 minutes (GPU recommended)
-
+  - Week 3 Transfer Learning: 1 hour (GPU recommended)
+  - Week 4 Optimization: 2 hours (GPU recommended)
 
 **Key Concepts:**
 - Convolutional Neural Networks (CNNs)
@@ -253,20 +284,22 @@ This is an educational project. For feedback or improvements:
 2. Submit a pull request with changes
 3. Ensure code follows project guidelines
 
-##  License
+## Conclusion
 
-This project is for educational purposes. The dataset is available under the Kaggle license.
+This project demonstrates the effectiveness of transfer learning for medical image classification. ResNet18 with fine-tuning achieved the best overall performance.
 
-##  Contact & Support
+## Limitations
 
-For questions about the project:
-- Check the weekly reports in `reports/`
-- Review notebook comments and documentation
-- Consult the dataset README in `data/README.md`
+- 2D slice-based MRI analysis (no volumetric context)
+- Dataset from single source (Kaggle)
+- No external clinical validation
+- Potential overfitting to dataset distribution
 
+## Future Work
 
-
-
-
+- 3D CNN for volumetric MRI analysis
+- External dataset validation
+- Model calibration and uncertainty estimation
+- Deployment with clinical-grade UI improvements
 
 

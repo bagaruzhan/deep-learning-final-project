@@ -1,5 +1,10 @@
 # Brain Tumor MRI Classification - Deep Learning Project
 
+- Student: Aruzhan Bagytzhan
+- Project Title: Brain Tumor MRI Classification
+- 100
+
+
 ## Overview
 
 This is a comprehensive deep learning project for **medical image classification** focusing on brain tumor detection and classification using MRI scans. The project implements state-of-the-art CNN architectures with transfer learning to classify brain tumors into four categories: glioma, meningioma, pituitary tumor, or no tumor.
